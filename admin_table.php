@@ -30,6 +30,12 @@
             $userID = $_POST['confirmed_user_id'];
             $delete_user = "DELETE FROM users WHERE CustomerID = $userID";
             $conn->query($delete_user);
+            header('Location: admin_table.php');
+            exit;
+        }
+        else {
+            header('Location: admin_table.php');
+            exit;
         }
     }
 

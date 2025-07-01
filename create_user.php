@@ -19,6 +19,8 @@
                         VALUES('$name', '$phone_number', '$address', '$city', '$country')";
 
         $conn->query($create_user);
+        header('Location: create_user.php');
+        exit;
     }
 
 ?>
