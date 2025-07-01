@@ -1,10 +1,7 @@
 
 <?php
 
-    $host = "localhost";
-    $user = "root";
-    $password = "";
-    $database = "g-30"; 
+    include 'conn_db.php';
 
     $conn = mysqli_connect($host, $user, $password, $database);
 
@@ -55,7 +52,7 @@
 
     if ($result && mysqli_num_rows($result) > 0) {
         echo '
-            <table border="1">
+            <table border="2">
                 <thead>
                     <tr>
                         <th>Name</th>
