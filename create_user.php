@@ -7,7 +7,6 @@
 
     $conn = mysqli_connect($host, $user, $password, $database);
 
-
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // get valuse from input form 
@@ -20,13 +19,11 @@
         // insert user 
         $create_user = "INSERT INTO users(CustomerName, PhoneNumber, CurrentAddress, City, Country)
                         VALUES('$name', '$phone_number', '$address', '$city', '$country')";
-                        
-        $conn->query($create_user);
 
+        $conn->query($create_user);
     }
 
 ?>
-
 
 <!DOCTYPE html>
 <html>

@@ -14,13 +14,12 @@
     // }
     // echo "Connected successfully! <br /><br />";
 
+
     $showConfirm = false;
-
-
 
     // Step 1: When "Delete User" button is clicked
     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['delete_user'])) {
-        
+
         $showConfirm = true;
         $userIDToDelete = $_POST['delete_user'];
     }
@@ -53,8 +52,6 @@
     // query users from database 
     $table_user = "SELECT * FROM users";
     $result = mysqli_query($conn, $table_user);
-
-
 
     if ($result && mysqli_num_rows($result) > 0) {
         echo '
@@ -102,9 +99,6 @@
     // get file confirm pop up
     include 'confirm_pop_up.php';
 ?>
-
-
-
 
 </body>
 </html>
