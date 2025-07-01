@@ -1,12 +1,14 @@
+/* Overall page layout */
 body {
     font-family: Arial, sans-serif;
     background-color: #f7f9fb;
     padding: 40px;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Table style */
 table {
     border-collapse: collapse;
     width: 90%;
@@ -15,6 +17,7 @@ table {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
+    margin-bottom: 40px;
 }
 
 th, td {
@@ -28,7 +31,7 @@ thead {
     color: white;
 }
 
-
+/* Delete button */
 #delete {
     background-color: #e74c3c;
     color: white;
@@ -40,5 +43,46 @@ thead {
 }
 
 #delete:hover {
+    background-color: #c0392b;
+}
+
+/* Confirmation form */
+form#confirm {
+    background-color: white;
+    padding: 20px 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+form#confirm h3 {
+    margin-bottom: 20px;
+}
+
+form#confirm button {
+    margin: 0 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form#confirm button[name="confirm_delete"][value="no"] {
+    background-color: #95a5a6;
+    color: white;
+}
+
+form#confirm button[name="confirm_delete"][value="no"]:hover {
+    background-color: #7f8c8d;
+}
+
+form#confirm button[name="confirm_delete"][value="yes"] {
+    background-color: #e74c3c;
+    color: white;
+}
+
+form#confirm button[name="confirm_delete"][value="yes"]:hover {
     background-color: #c0392b;
 }

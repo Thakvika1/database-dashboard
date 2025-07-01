@@ -14,13 +14,23 @@
     // }
     // echo "Connected successfully! <br /><br />";
 
+    $showConfirm = false;
 
-    // button delete user 
+
+
+    // Step 1: When "Delete User" button is clicked
     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['delete_user'])) {
-        $userID = $_POST['delete_user'];
+        $showConfirm = true;
+        $userIDToDelete = $_POST['delete_user'];
+    }
 
-        $delete_user = "DELETE FROM users WHERE CustomerID = $userID";
-        $conn->query($delete_user);
+    // Step 2: When confirmation (yes/no) is clicked
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['confirm_delete'])) {
+        if ($_POST['confirm_delete'] === 'yes' && isset($_POST['confirmed_user_id'])) {
+            $userID = $_POST['confirmed_user_id'];
+            $delete_user = "DELETE FROM users WHERE CustomerID = $userID";
+            $conn->query($delete_user);
+        }
     }
 
 ?>
@@ -29,7 +39,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./src/admin_table.css">
+    <!-- <link rel="stylesheet" href="./src/admin_table.css"> -->
+    <link rel="stylesheet" href="./src/admin_table.css?v=1">
 </head>
 <body>
 
@@ -85,6 +96,16 @@
     }
 
 ?>
+
+<?php if ($showConfirm): ?>
+    <form id="confirm" method="post">
+        <h3>Do you want to delete this user?</h3>
+        <input type="hidden" name="confirmed_user_id" value="<?= $userIDToDelete ?>">
+        <button type="submit" name="confirm_delete" value="no">No</button>
+        <button type="submit" name="confirm_delete" value="yes">Yes</button>
+    </form>
+<?php endif; ?>
+
 
 
 </body>
